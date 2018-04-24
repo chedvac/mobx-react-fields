@@ -6,5 +6,10 @@ const RootStore = types.model({
     userDetails:PersonalInformation
 })
 export default  RootStore.create({
-    userDetails:{firstName:{value:"",validations:[null]},lastName:{value:"",validations:[null]},comments:{value:"",validations:[null]},status:{value:""}}
+    userDetails:{firstName:{value:"",validations:[null]},
+    lastName:{value:"",validations:[null]},
+    comments:{value:"",validations:[null]},
+    status:{value:""},
+    gender:{value:""}
+}
 })

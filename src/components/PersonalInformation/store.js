@@ -4,7 +4,8 @@ const PersonalInformation = types.model({
     firstName:  BaseStoreValue,
     lastName:  BaseStoreValue,
     comments:BaseStoreValue,
-    status: BaseStoreValue
+    status: BaseStoreValue,
+    gender: BaseStoreValue
 })
 
 export default PersonalInformation;

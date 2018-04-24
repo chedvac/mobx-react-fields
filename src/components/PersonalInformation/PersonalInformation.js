@@ -3,7 +3,9 @@ import {observer} from 'mobx-react'
 import BaseInput from '../../Fields/BaseInput';
 import BaseTextarea from '../../Fields/BaseTextarea';
 import BaseSelect from '../../Fields/BaseSelect';
+import BaseRadio from '../../Fields/BaseRadio';
 import injectWrapper from '../../core/inject'
+import LabelField from '../../Elements/LabelField'
 
 @observer
 export default class PersonalInformation extends React.Component{
@@ -14,7 +16,10 @@ export default class PersonalInformation extends React.Component{
         this.texts = {
             hebrew: {
                 firstName: ' שם פרטי',
-                lastName: ' שם משפחה'
+                lastName: ' שם משפחה',
+                male: 'זכר',
+                female: 'נקבה',
+                gender: 'מין'
             },
             english: {
                 firstName: 'first name',
@@ -46,7 +51,9 @@ export default class PersonalInformation extends React.Component{
         const Status = injectWrapper(BaseSelect,{
             field: this.props.status
         });
-       
+        const Gender = injectWrapper(BaseRadio,{
+            field: this.props.gender
+        });
         return(
             <div className="row">
                 <div className="col-md-4">
@@ -60,7 +67,19 @@ export default class PersonalInformation extends React.Component{
                 </div> 
                 <div className="col-md-4">
                     <Status label='status' options={this.statusOptions}/>
-                </div>          
+                </div>
+                <br/>  
+                <div className="row">
+                    <div className="col-md-4">
+                        <LabelField label={this.currentResources().gender} />
+                        <div className="col-md-4">
+                            <Gender label={this.currentResources().male} value='1' name='gender'/>
+                        </div>
+                        <div className="col-md-4">
+                            <Gender label={this.currentResources().female} value='2' name='gender'/>
+                        </div> 
+                    </div>
+                </div>   
             </div>
            
         );
