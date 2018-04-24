@@ -8,7 +8,7 @@ export default class BaseFieldBehaviors {
          
       onChange(newValue) {
        // this.field.validate();
-       // this.field.isValid ? this.field.update(newValue):'';
+       // this.field.isValid ? this.field.updateValue(newValue):'';
        this.field.updateValue(newValue)
     }; 
     

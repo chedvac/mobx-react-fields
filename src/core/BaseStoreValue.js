@@ -14,7 +14,8 @@ import { types } from "mobx-state-tree"
         }
       
     }
-})/*.validations(self => {
-    return {...self.validations}
-})*/
+}).volatile(self => (
+    {
+        type:'BaseStoreValue'
+    }));
 export default BaseStoreValue

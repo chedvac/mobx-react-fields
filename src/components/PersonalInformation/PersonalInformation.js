@@ -2,6 +2,7 @@ import React from 'react'
 import {observer} from 'mobx-react'
 import BaseInput from '../../Fields/BaseInput';
 import BaseTextarea from '../../Fields/BaseTextarea';
+import BaseSelect from '../../Fields/BaseSelect';
 import injectWrapper from '../../core/inject'
 
 @observer
@@ -25,6 +26,7 @@ export default class PersonalInformation extends React.Component{
             }
         }
         this.currentResources = this.currentResources.bind(this);
+        this.statusOptions=[{key:'1',value:'נשוי'},{key:'2',value:'רווק'},{key:'3',value:'גרוש'}]
 
     }
     currentResources = function(){
@@ -33,26 +35,32 @@ export default class PersonalInformation extends React.Component{
       
     render(){
         const FirstName = injectWrapper(BaseInput,{
-            fieldStore: this.props.firstName
+            field: this.props.firstName
         });
         const LastName = injectWrapper(BaseInput,{
-            fieldStore: this.props.lastName
+            field: this.props.lastName
         });
-         const Comments = injectWrapper(BaseTextarea,{
-            fieldStore: this.props.comments
+        const Comments = injectWrapper(BaseTextarea,{
+            field: this.props.comments
+        });
+        const Status = injectWrapper(BaseSelect,{
+            field: this.props.status
         });
        
         return(
             <div className="row">
                 <div className="col-md-4">
-                    <FirstName label={this.currentResources().firstName}/>
+                    <FirstName event='onBlur'/>
                 </div>
                 <div className="col-md-4">
                     <LastName label={this.currentResources().lastName}/>
                 </div> 
                 <div className="col-md-4">
                     <Comments label='comments' cols='200' rows='3'/>
-                </div>           
+                </div> 
+                <div className="col-md-4">
+                    <Status label='status' options={this.statusOptions}/>
+                </div>          
             </div>
            
         );

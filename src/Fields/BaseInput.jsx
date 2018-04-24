@@ -1,29 +1,33 @@
 import React from 'react'
 import {observer} from 'mobx-react'
-import FieldLabel from '../Elements/FieldLabel'
-import BaseFieldBehaviors from '../Behaviors/BaseField'
+import LabelField from '../Elements/LabelField'
+import {updateValue} from './utils/actions'
+import validationProps from './utils/validationProps'
+import {enableUniqueIds} from 'react-html-id'
 
 @observer
 export default class BaseInput extends React.Component{
     
     constructor(props) {
         super(props);
-       this.field = new BaseFieldBehaviors(props.fieldStore);
-      //this.field = props.fieldStore
+        validationProps(props);
+        enableUniqueIds(this);
     }
-   
       
     render(){
+        const {  field, label, isRequired} = this.props || {};
         return(
             <div>
-                <FieldLabel label={this.props.label} />
+                <LabelField label={label} isRequired={true} htmlFor={this.nextUniqueId()}/>
                 <input
-                    onChange={(e)=>this.field.onChange(e.target.value)}
-                    value={this.field.field.value}
+                    id={this.lastUniqueId()}
+                    onChange={(e)=>updateValue(e,field)}
+                    value={field.value}
                     className="text-field" 
                 />             
-                {/* <Error error={this.field.field.error}/> */}
+                {/* <Error error={field.message}/> */}
             </div>
         );
     }
+    
 }

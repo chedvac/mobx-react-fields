@@ -6,7 +6,8 @@
     "mobx-react": "^5.0.0",
     "mobx-state-tree": "^2.0.3",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-html-id": "^0.1.2"
   },
   "scripts": {
     "start": "react-app-rewired start",
