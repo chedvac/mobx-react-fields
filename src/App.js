@@ -1,9 +1,19 @@
 import React, { Component } from 'react';
 import './App.css';
 import rootStore from './rootStore';
+import { FileMiddleware } from './FileMiddleware';
 import ExampleForm from './exampleForm';
 import {observer, Provider} from 'mobx-react';
+import { addMiddleware } from "mobx-state-tree";
+import {createViewModel} from 'mobx-utils'
+
+
 window.rootStore=rootStore;
+
+const viewModel = createViewModel(rootStore);
+window.viewModel = viewModel;
+//addMiddleware(rootStore.userDetails.CV, FileMiddleware);
+addMiddleware(rootStore, FileMiddleware);
 
 @observer
 

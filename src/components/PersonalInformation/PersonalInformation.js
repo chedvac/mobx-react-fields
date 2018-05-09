@@ -3,6 +3,7 @@ import {observer} from 'mobx-react'
 import BaseInput from '../../Fields/BaseInput';
 import BaseTextarea from '../../Fields/BaseTextarea';
 import BaseSelect from '../../Fields/BaseSelect';
+import BaseFile from '../../Fields/BaseFile';
 import injectWrapper from '../../core/inject'
 
 @observer
@@ -46,6 +47,9 @@ export default class PersonalInformation extends React.Component{
         const Status = injectWrapper(BaseSelect,{
             field: this.props.status
         });
+        const CV = injectWrapper(BaseFile,{
+            field: this.props.CV
+        });
        
         return(
             <div className="row">
@@ -60,7 +64,10 @@ export default class PersonalInformation extends React.Component{
                 </div> 
                 <div className="col-md-4">
                     <Status label='status' options={this.statusOptions}/>
-                </div>          
+                </div>
+                <div className="col-md-4">
+                    <CV label='CV'/>
+                </div>        
             </div>
            
         );

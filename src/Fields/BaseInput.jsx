@@ -15,14 +15,14 @@ export default class BaseInput extends React.Component{
     }
       
     render(){
-        const {  field, label, isRequired} = this.props || {};
+        const {  field, label, isRequired=true} = this.props || {};
         return(
             <div>
-                <LabelField label={label} isRequired={true} htmlFor={this.nextUniqueId()}/>
+                <LabelField label={label} isRequired={isRequired} htmlFor={this.nextUniqueId()}/>
                 <input
                     id={this.lastUniqueId()}
                     onChange={(e)=>updateValue(e,field)}
-                    value={field.value}
+                    value1={field.value}
                     className="text-field" 
                 />             
                 {/* <Error error={field.message}/> */}
